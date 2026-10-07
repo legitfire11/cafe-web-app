@@ -68,16 +68,14 @@ export default function CafeLandingPage() {
   const total = cart.reduce((sum, x) => sum + x.item.price * x.qty, 0);
   const totalCount = cart.reduce((sum, x) => sum + x.qty, 0);
 
-  const orderWhatsApp = () => {
+    const orderWhatsApp = () => {
     if (cart.length === 0) return;
     const cafePhoneNumber = "917447379014";
-    let msg = "☕ *New Cafe Order*
-
-";
+    let msg = "☕ *New Cafe Order*\n\n";
     cart.forEach((x) => {
-      msg += "• " + x.item.name + " x" + x.qty + " - ₹" + (x.item.price * x.qty) + "
-";
+      msg += "• " + x.item.name + " x" + x.qty + " - ₹" + (x.item.price * x.qty) + "\n";
     });
+    msg += "\n*Total: ₹" + total + "*\n\nPlease confirm my pickup order!";
     window.open("https://wa.me/" + cafePhoneNumber + "?text=" + encodeURIComponent(msg), "_blank");
   };
 
