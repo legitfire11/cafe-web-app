@@ -1,4 +1,6 @@
-'use client';
+import urllib.request
+
+code = """'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { client } from '@/sanity/client';
@@ -73,7 +75,7 @@ export default function CafeLandingPage() {
     let msg = '*☕ New Cafe Order*%0A%0A';
     cart.forEach((x) => { msg += '• ' + x.item.name + ' x' + x.qty + ' - ₹' + (x.item.price * x.qty) + '%0A'; });
     msg += '%0A*Total: ₹' + total + '*%0A%0APlease confirm my pickup order!';
-    window.open('https://wa.me/7447379014?text=' + msg, '_blank');
+    window.open('https://wa.me/919876543210?text=' + msg, '_blank');
   };
 
   return (
@@ -186,24 +188,24 @@ export default function CafeLandingPage() {
       <section id="location" className="px-6 py-16 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold">Visit Our Beloved Cafe </h2>
+            <h2 className="text-3xl font-bold">Visit Our Sanctuary</h2>
             <div className="flex items-start gap-3 text-sm text-[#6B5E55]">
               <MapPin className="w-5 h-5 text-[#9A6B43] mt-0.5 flex-shrink-0" />
-              <span>Shop 4,MUKTAI APPRATMENT,OPPOSITE TO ASHISH GARDEN,KOTHRUD, PUNE-411038 MH</span>
+              <span>Shop 4, Lane 5, Main High Street, Pune, MH</span>
             </div>
             <div className="flex items-start gap-3 text-sm text-[#6B5E55]">
               <Clock className="w-5 h-5 text-[#9A6B43] mt-0.5 flex-shrink-0" />
-              <span>Mon – Sun: 10:00 AM – 11:00 PM</span>
+              <span>Mon – Sun: 8:00 AM – 11:00 PM</span>
             </div>
             <div className="flex items-start gap-3 text-sm text-[#6B5E55]">
               <Phone className="w-5 h-5 text-[#9A6B43] mt-0.5 flex-shrink-0" />
-              <span>+91 7447379014 </span>
+              <span>+91 98765 43210</span>
             </div>
           </div>
           <div className="h-64 rounded-2xl overflow-hidden border border-[#EAE3D9]">
             <iframe 
               title="Cafe Location"
-              src="https://maps.google.com/maps?q=Ashish%20Garden%2C%20DP%20Road%2C%20Kothrud%2C%20Pune%2C%20Maharashtra%20411038&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              src="https://maps.google.com/maps?q=Pune&t=&z=13&ie=UTF8&iwloc=&output=embed" 
               className="w-full h-full border-0"
             />
           </div>
@@ -260,3 +262,9 @@ export default function CafeLandingPage() {
     </div>
   );
 }
+"""
+
+with open("src/app/page.tsx", "w", encoding="utf-8") as f:
+    f.write(code)
+
+print("FILE_WRITTEN_OK")

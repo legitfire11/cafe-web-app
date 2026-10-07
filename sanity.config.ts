@@ -6,8 +6,8 @@ export default defineConfig({
   basePath: '/studio',
   name: 'cafe-studio',
   title: 'Velvet & Bean Admin',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId: 't2kujpb6',
+  dataset: 'production',
   plugins: [structureTool()],
   schema: schema,
 });
