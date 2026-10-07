@@ -68,13 +68,21 @@ export default function CafeLandingPage() {
   const total = cart.reduce((sum, x) => sum + x.item.price * x.qty, 0);
   const totalCount = cart.reduce((sum, x) => sum + x.qty, 0);
 
-  const orderWhatsApp = () => {
-    if (cart.length === 0) return;
-    let msg = '*☕ New Cafe Order*%0A%0A';
-    cart.forEach((x) => { msg += '• ' + x.item.name + ' x' + x.qty + ' - ₹' + (x.item.price * x.qty) + '%0A'; });
-    msg += '%0A*Total: ₹' + total + '*%0A%0APlease confirm my pickup order!';
-    window.open('https://wa.me/7447379014?text=' + msg, '_blank');
-  };
+const orderWhatsApp = () => {
+  if (cart.length === 0) return;
+
+  const cafePhoneNumber = '917447379014';
+  
+  let msg = '☕ *New Cafe Order*\n\n';
+  cart.forEach((x) => {
+    msg += `• ${x.item.name} x${x.qty} - ₹${x.item.price * x.qty}\n`;
+  });
+  msg += `\n*Total: ₹${total}*\n\nPlease confirm my pickup order!`;
+
+  // encodeURIComponent safely converts &, newlines, and emojis
+  const encodedText = encodeURIComponent(msg);
+  window.open(`https://wa.me/${cafePhoneNumber}?text=${encodedText}`, '_blank');
+};
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#2D241E] font-sans antialiased">
