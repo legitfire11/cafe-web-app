@@ -15,11 +15,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Velvet & Bean | Artisanal Coffee & Bakehouse",
   description: "Handcrafted coffee, wild-fermented sourdough, and fresh daily bakes in Kothrud, Pune. Order pickup directly via WhatsApp.",
+  metadataBase: new URL("https://cafe-web-app-8e21.vercel.app"),
   openGraph: {
     title: "Velvet & Bean | Artisanal Coffee & Bakehouse",
     description: "Handcrafted coffee, wild-fermented sourdough, and fresh daily bakes in Kothrud, Pune.",
     url: "https://cafe-web-app-8e21.vercel.app",
     siteName: "Velvet & Bean",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80",
+        width: 1200,
+        height: 630,
+        alt: "Velvet & Bean Artisanal Cafe",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
 };
