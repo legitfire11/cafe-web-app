@@ -279,6 +279,83 @@ export default function CafeLandingPage() {
       </section>
 
       {/* Editorial Menu Showcase */}
+      
+      {/* Brand Heritage & Story Section */}
+      <section id="about" className="py-24 px-6 lg:px-12 bg-[#F4ECE2] border-b border-[#E8DFD3]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Story Visual Grid */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-[#DECFBE] aspect-4/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Velvet & Bean Artisanal Coffee Craft" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="hidden sm:block absolute -bottom-8 -right-8 w-60 h-60 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#FAF7F2]">
+                <img 
+                  src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" 
+                  alt="Wild Fermented Sourdough Bakes" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Narrative Content */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-[#EAE0D3] border border-[#DECFBE] px-4 py-1.5 rounded-full">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-[#7E4F28] font-bold">
+                  Our Roots &bull; Est. Kothrud
+                </span>
+              </div>
+
+              <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#1C1612] leading-tight">
+                Born from an obsession with the slow, deliberate craft.
+              </h2>
+
+              <p className="text-[#6B5748] text-sm sm:text-base leading-relaxed font-light">
+                Velvet &amp; Bean started with a simple belief: morning rituals should never be rushed. Tucked away opposite Ashish Garden in Kothrud, our kitchen balances small-batch micro-lot coffee roasting with time-honored European baking techniques.
+              </p>
+
+              <div className="space-y-4 pt-4 border-t border-[#DECFBE]/60">
+                <div className="flex gap-4">
+                  <span className="font-mono text-sm font-bold text-[#7E4F28]">01 /</span>
+                  <div>
+                    <h4 className="font-serif text-lg text-[#1C1612] font-semibold">Single-Origin Arabica</h4>
+                    <p className="text-xs text-[#7A6656] font-light mt-0.5 leading-relaxed">
+                      Sourced directly from estates across Chikmagalur and the Western Ghats, roasted in small batches to preserve complex florals and cocoa notes.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <span className="font-mono text-sm font-bold text-[#7E4F28]">02 /</span>
+                  <div>
+                    <h4 className="font-serif text-lg text-[#1C1612] font-semibold">36-Hour Sourdough Fermentation</h4>
+                    <p className="text-xs text-[#7A6656] font-light mt-0.5 leading-relaxed">
+                      Every loaf, brioche bun, and focaccia slice is naturally leavened without industrial improvers, yielding open crumbs and deep flavor.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <span className="font-mono text-sm font-bold text-[#7E4F28]">03 /</span>
+                  <div>
+                    <h4 className="font-serif text-lg text-[#1C1612] font-semibold">Community Sanctuary</h4>
+                    <p className="text-xs text-[#7A6656] font-light mt-0.5 leading-relaxed">
+                      A quiet, sunlight-drenched corner designed for quiet reading, remote deep work, and unhurried conversations over pour-overs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <section id="menu" className="py-24 px-6 lg:px-12 bg-white border-y border-[#E8DFD3]">
         <div className="max-w-7xl mx-auto">
           
