@@ -66,9 +66,13 @@ export default function CafeLandingPage() {
             price: d.price || 0,
             description: d.description || '',
             badge: d.badge,
-            image: d.image ? urlFor(d.image).width(800).url() : MENU_ITEMS[0].image,
+            image: d.image 
+              ? urlFor(d.image).width(800).url() 
+              : (MENU_ITEMS.find((m) => m.name.toLowerCase() === d.name?.toLowerCase())?.image || MENU_ITEMS[0].image),
           }));
-          setItems([...live, ...MENU_ITEMS]);
+          const liveNames = new Set(live.map(x => x.name.toLowerCase()));
+          const extraDefaults = MENU_ITEMS.filter(x => !liveNames.has(x.name.toLowerCase()));
+          setItems([...live, ...extraDefaults]);
         }
       } catch (e) {
         console.error('Sanity fetch error:', e);
