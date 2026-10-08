@@ -17,19 +17,22 @@ import {
   ArrowRight,
   Search,
   X,
-  Lock
+  Lock,
+  Heart,
+  Compass,
+  Check
 } from 'lucide-react';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Items' },
-  { id: 'coffee', label: 'Hot Brews' },
-  { id: 'cold-beverages', label: 'Cold Sips & Shakes' },
-  { id: 'breakfast', label: 'Egg & Sourdough' },
-  { id: 'bites', label: 'Bites & Salads' },
-  { id: 'sandwiches', label: 'Sandwiches & Toasts' },
-  { id: 'pasta', label: 'Pasta' },
-  { id: 'burgers', label: 'Burgers' },
-  { id: 'desserts', label: 'Desserts' },
+  { id: 'all', label: 'Complete Collection' },
+  { id: 'coffee', label: 'Hot Brews & Espresso' },
+  { id: 'cold-beverages', label: 'Cold Brews & Shakes' },
+  { id: 'breakfast', label: 'Artisanal Eggs & Sourdough' },
+  { id: 'bites', label: 'Petit Portions & Greens' },
+  { id: 'sandwiches', label: 'Warm Focaccia & Toasts' },
+  { id: 'pasta', label: 'Rustic Hand-Crafted Pasta' },
+  { id: 'burgers', label: 'Bistro Brioche Burgers' },
+  { id: 'desserts', label: 'Patisserie & Dolce' },
 ];
 
 const ALLOWED_ADMIN_EMAILS = [
@@ -63,7 +66,7 @@ export default function CafeLandingPage() {
             price: d.price || 0,
             description: d.description || '',
             badge: d.badge,
-            image: d.image ? urlFor(d.image).width(700).url() : MENU_ITEMS[0].image,
+            image: d.image ? urlFor(d.image).width(800).url() : MENU_ITEMS[0].image,
           }));
           setItems([...live, ...MENU_ITEMS]);
         }
@@ -133,77 +136,82 @@ export default function CafeLandingPage() {
     if (cart.length === 0) return;
     const cafePhoneNumber = '917447379014';
     let msg = '☕ *New Order from Velvet & Bean*\n';
-    msg += '------------------------------\n';
+    msg += '──────────────────────────\n';
     cart.forEach((x) => {
       msg += `• ${x.item.name} (x${x.qty}) — ₹${x.item.price * x.qty}\n`;
     });
-    msg += '------------------------------\n';
-    msg += `*Total Amount:* ₹${total}\n\n`;
-    msg += '📍 *Pickup Location:* Muktai Apartment, opp. Ashish Garden, Kothrud\n';
+    msg += '──────────────────────────\n';
+    msg += `*Subtotal:* ₹${total}\n\n`;
+    msg += '📍 *Pickup Point:* Muktai Apartment, opp. Ashish Garden, Kothrud\n';
     msg += 'Please confirm my order!';
     window.open(`https://wa.me/${cafePhoneNumber}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-[#241A15] antialiased selection:bg-[#E8D8C8]">
-      {/* Top Banner */}
-      <div className="bg-[#241A15] text-[#D8C7B5] text-xs py-2 px-4 text-center tracking-wider font-light flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-[#C99E75]" />
-        <span>Freshly roasted beans & morning sourdough baked daily in Kothrud</span>
+    <div className="min-h-screen bg-[#FAF7F2] text-[#221B16] font-sans antialiased selection:bg-[#E8DCCF]">
+      
+      {/* Editorial Announcement Bar */}
+      <div className="bg-[#1C1612] text-[#D4C3B3] text-[11px] py-2 px-6 tracking-widest uppercase font-medium flex items-center justify-center gap-3 border-b border-[#2D231D]">
+        <Sparkles className="w-3.5 h-3.5 text-[#C59B6D]" />
+        <span>Artisanal Single-Origin Roastery • Fresh Bakes Daily in Kothrud, Pune</span>
+        <Sparkles className="w-3.5 h-3.5 text-[#C59B6D]" />
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#ECE3D8] transition-all">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#ECE3D8] flex items-center justify-center border border-[#DFD4C6]">
-              <Coffee className="w-5 h-5 text-[#885830]" />
+      {/* Main Glassmorphic Navigation */}
+      <header className="sticky top-0 z-40 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#E8DFD3] transition-all">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-24 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-[#EFE7DC] border border-[#DECFBE] flex items-center justify-center shadow-inner">
+              <Coffee className="w-5 h-5 text-[#7E4F28]" />
             </div>
             <div>
-              <span className="font-serif text-2xl font-semibold tracking-tight text-[#241A15] block leading-none">
+              <span className="font-serif text-2xl lg:text-3xl font-semibold tracking-tight text-[#1C1612] block leading-none">
                 Velvet &amp; Bean
               </span>
-              <span className="text-[10px] tracking-widest uppercase text-[#9B7B63] font-mono">
-                Artisanal Roastery &amp; Bakes
+              <span className="text-[10px] tracking-[0.25em] uppercase text-[#967C69] font-medium mt-1 block">
+                Bakehouse &bull; Coffee Bar
               </span>
             </div>
           </div>
 
-          <nav className="flex items-center gap-5">
-            <a href="#menu" className="hidden md:inline-block text-sm text-[#5C483A] hover:text-[#241A15] font-medium transition">
+          <nav className="flex items-center gap-6">
+            <a href="#menu" className="hidden md:inline-block text-xs uppercase tracking-widest text-[#6B5748] hover:text-[#1C1612] font-semibold transition">
               Menu
             </a>
-            <a href="#location" className="hidden md:inline-block text-sm text-[#5C483A] hover:text-[#241A15] font-medium transition">
+            <a href="#about" className="hidden md:inline-block text-xs uppercase tracking-widest text-[#6B5748] hover:text-[#1C1612] font-semibold transition">
+              Heritage
+            </a>
+            <a href="#location" className="hidden md:inline-block text-xs uppercase tracking-widest text-[#6B5748] hover:text-[#1C1612] font-semibold transition">
               Find Us
             </a>
 
-            {/* Secret / Authorized Admin Studio Access */}
+            {/* Discreet Staff Trigger */}
             {isAdmin ? (
               <a 
                 href="/studio"
-                className="text-xs font-semibold text-[#885830] border border-[#885830] px-3.5 py-1.5 rounded-full hover:bg-[#885830] hover:text-[#FDFBF7] transition"
+                className="text-xs font-semibold text-[#7E4F28] border border-[#7E4F28] px-4 py-2 rounded-full hover:bg-[#7E4F28] hover:text-[#FAF7F2] transition tracking-wider uppercase text-[11px]"
               >
                 Studio CMS
               </a>
             ) : (
               <button 
                 onClick={handleAdminAuth}
-                className="text-[11px] text-[#A08A79] hover:text-[#5C483A] transition flex items-center gap-1 px-2 py-1"
+                className="text-[11px] text-[#A89687] hover:text-[#6B5748] transition flex items-center gap-1.5 px-2 py-1"
                 title="Staff login"
               >
                 <Lock className="w-3 h-3" /> Staff
               </button>
             )}
 
-            {/* Bag Button */}
+            {/* Bag Drawer Trigger */}
             <button 
               onClick={() => setIsCartOpen(true)}
-              className="relative flex items-center gap-2.5 bg-[#241A15] hover:bg-[#3D2C22] text-[#FDFBF7] px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition shadow-sm hover:shadow"
+              className="relative flex items-center gap-2.5 bg-[#1C1612] hover:bg-[#34271F] text-[#FAF7F2] px-6 py-3 rounded-full text-xs font-semibold tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-95"
             >
-              <ShoppingBag className="w-4 h-4 text-[#C99E75]" />
+              <ShoppingBag className="w-4 h-4 text-[#C59B6D]" />
               <span>Bag</span>
               {totalCount > 0 && (
-                <span className="ml-1 bg-[#C99E75] text-[#241A15] text-[11px] font-bold px-2 py-0.2 rounded-full">
+                <span className="ml-1 bg-[#C59B6D] text-[#1C1612] text-[11px] font-bold px-2 py-0.5 rounded-full">
                   {totalCount}
                 </span>
               )}
@@ -212,76 +220,97 @@ export default function CafeLandingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative px-6 pt-16 pb-16 md:pt-20 md:pb-20 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 bg-[#F1E9DF] border border-[#E3D6C8] px-4 py-1.5 rounded-full mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#885830] animate-pulse"></span>
-          <span className="text-[11px] uppercase tracking-widest text-[#734E2F] font-semibold">
-            Specialty Coffee &amp; French Bakes
+      {/* Atmospheric Editorial Hero */}
+      <section className="relative px-6 pt-16 pb-20 md:pt-28 md:pb-32 max-w-6xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2.5 bg-[#EFE7DC]/80 border border-[#DECFBE] px-5 py-2 rounded-full mb-8 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#7E4F28] animate-ping"></span>
+          <span className="text-[11px] uppercase tracking-[0.2em] text-[#6B5748] font-bold">
+            Slow Extraction &bull; Wild-Fermented Daily
           </span>
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-normal text-[#241A15] leading-[1.1] tracking-tight">
-          Where slow craft <br />
-          <span className="italic font-light text-[#885830]">meets quiet mornings.</span>
+        <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl font-normal text-[#1C1612] leading-[1.08] tracking-tight max-w-4xl mx-auto">
+          Quiet luxury in every <br />
+          <span className="italic font-light text-[#7E4F28]">sip &amp; crumb.</span>
         </h1>
 
-        <p className="mt-5 text-base sm:text-lg text-[#6E5848] max-w-2xl mx-auto font-light leading-relaxed">
-          Pour-overs steeped with care, wild-fermented sourdough, hand-laminated focaccia, and bistro specialties.
+        <p className="mt-8 text-base sm:text-xl text-[#6B5748] max-w-2xl mx-auto font-light leading-relaxed">
+          Single-estate pour overs, slow butter-laminated pastries, and peaceful afternoons nestled in Kothrud, Pune.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a 
             href="#menu" 
-            className="inline-flex items-center gap-2 bg-[#241A15] text-[#FDFBF7] px-7 py-3.5 rounded-full text-sm font-medium hover:bg-[#3D2C22] transition shadow-sm"
+            className="inline-flex items-center gap-3 bg-[#1C1612] hover:bg-[#34271F] text-[#FAF7F2] px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold transition-all shadow-md hover:shadow-lg active:scale-95"
           >
-            Explore Menu <ArrowRight className="w-4 h-4 text-[#C99E75]" />
+            Explore Today&apos;s Menu <ArrowRight className="w-4 h-4 text-[#C59B6D]" />
           </a>
           <a 
             href="#location" 
-            className="inline-flex items-center gap-2 bg-transparent text-[#241A15] border border-[#D5C6B5] hover:border-[#241A15] px-7 py-3.5 rounded-full text-sm font-medium transition"
+            className="inline-flex items-center gap-2 bg-transparent text-[#1C1612] border border-[#DECFBE] hover:border-[#1C1612] px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold transition"
           >
-            Visit Our Space
+            Location &bull; Hours
           </a>
+        </div>
+
+        {/* Ambient Brand Badges */}
+        <div className="mt-20 pt-12 border-t border-[#E8DFD3] grid grid-cols-2 md:grid-cols-4 gap-8 text-left">
+          <div className="space-y-1.5 border-l border-[#DECFBE] pl-5">
+            <p className="font-serif text-xl font-normal text-[#1C1612]">100% Arabica</p>
+            <p className="text-xs text-[#8A7768] font-light">Direct-trade micro lot beans</p>
+          </div>
+          <div className="space-y-1.5 border-l border-[#DECFBE] pl-5">
+            <p className="font-serif text-xl font-normal text-[#1C1612]">Pure Butter Bakes</p>
+            <p className="text-xs text-[#8A7768] font-light">Natural 36-hour fermentation</p>
+          </div>
+          <div className="space-y-1.5 border-l border-[#DECFBE] pl-5">
+            <p className="font-serif text-xl font-normal text-[#1C1612]">Peaceful Space</p>
+            <p className="text-xs text-[#8A7768] font-light">Sunlit corners &amp; quiet desks</p>
+          </div>
+          <div className="space-y-1.5 border-l border-[#DECFBE] pl-5">
+            <p className="font-serif text-xl font-normal text-[#1C1612]">WhatsApp Pickup</p>
+            <p className="text-xs text-[#8A7768] font-light">Packaged fresh for your arrival</p>
+          </div>
         </div>
       </section>
 
-      {/* Menu Section */}
-      <section id="menu" className="py-16 px-6 bg-white border-y border-[#ECE3D8]">
-        <div className="max-w-6xl mx-auto">
-          {/* Header & Search */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      {/* Editorial Menu Showcase */}
+      <section id="menu" className="py-24 px-6 lg:px-12 bg-white border-y border-[#E8DFD3]">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Section Heading & Interactive Search */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
             <div>
-              <span className="text-[11px] uppercase tracking-widest text-[#9B7B63] font-semibold block mb-1">
-                Artisanal Kitchen &amp; Bar
+              <span className="text-[11px] uppercase tracking-[0.25em] text-[#967C69] font-bold block mb-2">
+                Handcrafted Table Offerings
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#241A15]">
-                Our Offerings
+              <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#1C1612] tracking-tight">
+                Curated Menu
               </h2>
             </div>
 
-            <div className="relative w-full md:w-72">
-              <Search className="w-4 h-4 text-[#9B7B63] absolute left-4 top-1/2 -translate-y-1/2" />
+            <div className="relative w-full lg:w-80">
+              <Search className="w-4 h-4 text-[#967C69] absolute left-5 top-1/2 -translate-y-1/2" />
               <input 
                 type="text"
-                placeholder="Search food or coffee..."
+                placeholder="Search coffee, toasts, desserts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 rounded-full border border-[#DFD4C6] bg-[#FDFBF7] text-sm text-[#241A15] placeholder-[#A08A79] focus:outline-none focus:ring-2 focus:ring-[#885830]/30 transition"
+                className="w-full pl-12 pr-5 py-3 rounded-full border border-[#DECFBE] bg-[#FAF7F2] text-sm text-[#1C1612] placeholder-[#A89687] focus:outline-none focus:ring-2 focus:ring-[#7E4F28]/25 transition"
               />
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-14 no-scrollbar">
+          {/* Minimalist Pill Filter Bar */}
+          <div className="flex items-center gap-3 overflow-x-auto pb-6 mb-16 no-scrollbar">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition whitespace-nowrap ${
+                className={`px-6 py-3 rounded-full text-xs font-semibold tracking-wider transition whitespace-nowrap ${
                   selectedCategory === cat.id
-                    ? 'bg-[#241A15] text-[#FDFBF7] shadow-sm'
-                    : 'bg-[#F7F2EC] text-[#6E5848] hover:bg-[#EDE3D7]'
+                    ? 'bg-[#1C1612] text-[#FAF7F2] shadow-sm'
+                    : 'bg-[#F4ECE2] text-[#6B5748] hover:bg-[#EAE0D3]'
                 }`}
               >
                 {cat.label}
@@ -289,58 +318,66 @@ export default function CafeLandingPage() {
             ))}
           </div>
 
-          {/* Grouped Categorized Sections */}
-          <div className="space-y-16">
+          {/* Grouped Category Sections */}
+          <div className="space-y-20">
             {groupedCategories.map((group) => (
-              <div key={group.id} className="space-y-6">
-                <div className="flex items-center gap-4 pb-3 border-b border-[#ECE3D8]">
-                  <h3 className="font-serif text-2xl font-normal text-[#241A15]">
-                    {group.label}
-                  </h3>
-                  <span className="text-xs text-[#9B7B63] font-mono">
-                    ({group.items.length} {group.items.length === 1 ? 'item' : 'items'})
-                  </span>
+              <div key={group.id} className="space-y-8">
+                
+                {/* Section Header Line */}
+                <div className="flex items-center justify-between pb-4 border-b border-[#E8DFD3]">
+                  <div className="flex items-baseline gap-3">
+                    <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#1C1612]">
+                      {group.label}
+                    </h3>
+                    <span className="text-xs text-[#967C69] font-mono tracking-wider">
+                      &bull; {group.items.length} {group.items.length === 1 ? 'item' : 'selections'}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                {/* Product Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {group.items.map((item) => (
                     <div 
                       key={item.id} 
-                      className="group bg-[#FDFBF7] border border-[#ECE3D8] rounded-2xl overflow-hidden hover:border-[#D5C6B5] hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                      className="group bg-[#FAF7F2] border border-[#E8DFD3] rounded-3xl overflow-hidden hover:border-[#D5C6B5] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                     >
                       <div>
-                        <div className="relative h-52 w-full overflow-hidden bg-[#EFE9E0]">
+                        {/* Aspect Ratio Controlled Image */}
+                        <div className="relative h-60 w-full overflow-hidden bg-[#EAE0D3]">
                           <img 
                             src={item.image} 
                             alt={item.name} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
                           />
                           {item.badge && (
-                            <span className="absolute top-3.5 left-3.5 bg-[#241A15]/85 backdrop-blur-md text-[#EFE9E0] text-[10px] uppercase font-semibold tracking-wider px-3 py-1 rounded-full">
+                            <span className="absolute top-4 left-4 bg-[#1C1612]/80 backdrop-blur-md text-[#FAF7F2] text-[10px] uppercase font-bold tracking-widest px-3.5 py-1.5 rounded-full shadow-xs">
                               {item.badge}
                             </span>
                           )}
                         </div>
 
-                        <div className="p-5">
-                          <div className="flex items-baseline justify-between gap-2 mb-2">
-                            <h4 className="font-serif text-lg font-normal text-[#241A15] group-hover:text-[#885830] transition leading-snug">
+                        {/* Card Meta Content */}
+                        <div className="p-6">
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <h4 className="font-serif text-xl font-normal text-[#1C1612] group-hover:text-[#7E4F28] transition leading-snug">
                               {item.name}
                             </h4>
-                            <span className="font-mono text-base font-semibold text-[#241A15] whitespace-nowrap">
+                            <span className="font-mono text-base font-semibold text-[#1C1612] bg-[#EFE7DC] px-2.5 py-1 rounded-md whitespace-nowrap">
                               ₹{item.price}
                             </span>
                           </div>
-                          <p className="text-xs text-[#7A6453] leading-relaxed line-clamp-2 font-light">
+                          <p className="text-xs text-[#7A6656] leading-relaxed line-clamp-2 font-light mt-1">
                             {item.description}
                           </p>
                         </div>
                       </div>
 
-                      <div className="px-5 pb-5 pt-0">
+                      {/* Card Action */}
+                      <div className="px-6 pb-6 pt-0">
                         <button
                           onClick={() => addToCart(item)}
-                          className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-[#DFD4C6] hover:bg-[#241A15] hover:text-[#FDFBF7] hover:border-[#241A15] rounded-xl text-xs font-semibold tracking-wide uppercase transition-all duration-200"
+                          className="w-full flex items-center justify-center gap-2 py-3 bg-white border border-[#DECFBE] hover:bg-[#1C1612] hover:text-[#FAF7F2] hover:border-[#1C1612] rounded-2xl text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-2xs"
                         >
                           <Plus className="w-3.5 h-3.5" /> Add to Order
                         </button>
@@ -352,59 +389,60 @@ export default function CafeLandingPage() {
             ))}
 
             {groupedCategories.length === 0 && (
-              <div className="py-20 text-center">
-                <p className="text-[#8A7565] text-sm">No dishes match your search query.</p>
+              <div className="py-24 text-center space-y-3">
+                <p className="font-serif text-2xl text-[#1C1612]">No culinary items match your search</p>
+                <p className="text-xs text-[#8A7768]">Try searching for &quot;latte&quot;, &quot;focaccia&quot;, or &quot;croissant&quot;.</p>
               </div>
             )}
           </div>
         </div>
       </section>
 
-      {/* Location Section */}
-      <section id="location" className="py-20 px-6 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+      {/* Atmospheric Space Section */}
+      <section id="location" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
             <div>
-              <span className="text-[11px] uppercase tracking-widest text-[#9B7B63] font-semibold block mb-1">
-                Neighborhood Bistro &amp; Café
+              <span className="text-[11px] uppercase tracking-[0.25em] text-[#967C69] font-bold block mb-2">
+                Sanctuary in Kothrud
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#241A15]">
-                Visit Us in Kothrud
+              <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#1C1612] leading-tight">
+                Our Physical Space
               </h2>
             </div>
 
-            <p className="text-[#6E5848] text-sm leading-relaxed font-light">
-              Muktai Apartment, opposite Ashish Garden in Kothrud. Drop in for quiet mornings, afternoon coffees, or pick up your pre-orders.
+            <p className="text-[#6B5748] text-base leading-relaxed font-light">
+              Tucked away opposite Ashish Garden in Kothrud, Velvet &amp; Bean is conceived as an escape from the city rush. Come for the aroma of whole beans roasted on-site and sourdough rising in the ovens.
             </p>
 
-            <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#EFE9E0] flex items-center justify-center flex-shrink-0 text-[#885830]">
+            <div className="space-y-5 pt-2">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#EFE7DC]/50 border border-[#DECFBE]">
+                <div className="w-10 h-10 rounded-full bg-[#EFE7DC] border border-[#DECFBE] flex items-center justify-center flex-shrink-0 text-[#7E4F28]">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#241A15] uppercase tracking-wider">Address</p>
-                  <p className="text-sm text-[#6E5848]">Muktai Apartment, opposite Ashish Garden, Kothrud, Pune - 411038</p>
+                  <p className="text-xs font-bold text-[#1C1612] uppercase tracking-wider">Address</p>
+                  <p className="text-sm text-[#6B5748] mt-0.5">Muktai Apartment, opposite Ashish Garden, Kothrud, Pune - 411038</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#EFE9E0] flex items-center justify-center flex-shrink-0 text-[#885830]">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#EFE7DC]/50 border border-[#DECFBE]">
+                <div className="w-10 h-10 rounded-full bg-[#EFE7DC] border border-[#DECFBE] flex items-center justify-center flex-shrink-0 text-[#7E4F28]">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#241A15] uppercase tracking-wider">Hours</p>
-                  <p className="text-sm text-[#6E5848]">Monday – Sunday: 8:00 AM – 11:00 PM</p>
+                  <p className="text-xs font-bold text-[#1C1612] uppercase tracking-wider">Bakehouse Hours</p>
+                  <p className="text-sm text-[#6B5748] mt-0.5">Monday – Sunday &bull; 8:00 AM – 11:00 PM</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#EFE9E0] flex items-center justify-center flex-shrink-0 text-[#885830]">
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#EFE7DC]/50 border border-[#DECFBE]">
+                <div className="w-10 h-10 rounded-full bg-[#EFE7DC] border border-[#DECFBE] flex items-center justify-center flex-shrink-0 text-[#7E4F28]">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#241A15] uppercase tracking-wider">Phone</p>
-                  <a href="tel:+917447379014" className="text-sm text-[#885830] hover:underline font-medium">
+                  <p className="text-xs font-bold text-[#1C1612] uppercase tracking-wider">Direct Concierge</p>
+                  <a href="tel:+917447379014" className="text-sm text-[#7E4F28] hover:underline font-medium mt-0.5 block">
                     +91 7447379014
                   </a>
                 </div>
@@ -412,9 +450,10 @@ export default function CafeLandingPage() {
             </div>
           </div>
 
-          <div className="h-80 lg:h-96 rounded-2xl overflow-hidden border border-[#ECE3D8] shadow-sm bg-[#EFE9E0]">
+          {/* Clean Map Frame */}
+          <div className="h-96 lg:h-[460px] rounded-3xl overflow-hidden border border-[#DECFBE] shadow-lg bg-[#EFE7DC]">
             <iframe 
-              title="Velvet & Bean Location"
+              title="Velvet and Bean Cafe Location"
               src="https://maps.google.com/maps?q=Ashish%20Garden%2C%20DP%20Road%2C%20Kothrud%2C%20Pune%2C%20Maharashtra%20411038&t=&z=16&ie=UTF8&iwloc=&output=embed" 
               className="w-full h-full border-0"
               loading="lazy"
@@ -424,19 +463,19 @@ export default function CafeLandingPage() {
         </div>
       </section>
 
-      {/* Bag / Cart Drawer */}
+      {/* Bag / Order Drawer */}
       {isCartOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-[#241A15]/50 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md bg-[#FDFBF7] h-full flex flex-col p-6 sm:p-8 shadow-2xl justify-between border-l border-[#ECE3D8]">
+        <div className="fixed inset-0 z-50 flex justify-end bg-[#1C1612]/60 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md bg-[#FAF7F2] h-full flex flex-col p-6 sm:p-8 shadow-2xl justify-between border-l border-[#E8DFD3]">
             <div>
-              <div className="flex items-center justify-between pb-5 border-b border-[#ECE3D8]">
-                <div className="flex items-center gap-2.5">
-                  <ShoppingBag className="w-5 h-5 text-[#885830]" />
-                  <h2 className="font-serif text-2xl font-normal text-[#241A15]">Your Bag</h2>
+              <div className="flex items-center justify-between pb-6 border-b border-[#E8DFD3]">
+                <div className="flex items-center gap-3">
+                  <ShoppingBag className="w-5 h-5 text-[#7E4F28]" />
+                  <h2 className="font-serif text-2xl font-normal text-[#1C1612]">Your Order Bag</h2>
                 </div>
                 <button 
                   onClick={() => setIsCartOpen(false)} 
-                  className="p-1 rounded-full text-[#7A6453] hover:text-[#241A15] hover:bg-[#EFE9E0] transition"
+                  className="p-1.5 rounded-full text-[#7A6656] hover:text-[#1C1612] hover:bg-[#EFE7DC] transition"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -444,34 +483,34 @@ export default function CafeLandingPage() {
 
               <div className="overflow-y-auto max-h-[60vh] py-6 space-y-4 no-scrollbar">
                 {cart.length === 0 ? (
-                  <div className="py-20 text-center space-y-2">
-                    <p className="font-serif text-lg text-[#241A15]">Your bag is empty</p>
-                    <p className="text-xs text-[#8A7565]">Select freshly prepared dishes or brews from the menu.</p>
+                  <div className="py-20 text-center space-y-3">
+                    <p className="font-serif text-xl text-[#1C1612]">Your bag is currently empty</p>
+                    <p className="text-xs text-[#8A7768]">Choose freshly ground coffee or hot bakes from our menu.</p>
                   </div>
                 ) : (
                   cart.map((x) => (
-                    <div key={x.item.id} className="flex items-center justify-between border-b border-[#ECE3D8] pb-4">
+                    <div key={x.item.id} className="flex items-center justify-between border-b border-[#E8DFD3] pb-4">
                       <div>
-                        <p className="font-medium text-sm text-[#241A15]">{x.item.name}</p>
-                        <p className="text-xs text-[#8A7565] mt-0.5">₹{x.item.price} each</p>
+                        <p className="font-medium text-sm text-[#1C1612]">{x.item.name}</p>
+                        <p className="text-xs text-[#8A7768] mt-0.5 font-mono">₹{x.item.price} each</p>
                       </div>
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center border border-[#DFD4C6] rounded-lg bg-white overflow-hidden">
+                        <div className="flex items-center border border-[#DECFBE] rounded-lg bg-white overflow-hidden shadow-2xs">
                           <button 
                             onClick={() => updateQuantity(x.item.id, -1)} 
-                            className="p-1.5 hover:bg-[#EFE9E0] text-[#5C483A] transition"
+                            className="p-1.5 hover:bg-[#EFE7DC] text-[#6B5748] transition"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="text-xs font-semibold px-2 text-[#241A15]">{x.qty}</span>
+                          <span className="text-xs font-semibold px-2 text-[#1C1612]">{x.qty}</span>
                           <button 
                             onClick={() => updateQuantity(x.item.id, 1)} 
-                            className="p-1.5 hover:bg-[#EFE9E0] text-[#5C483A] transition"
+                            className="p-1.5 hover:bg-[#EFE7DC] text-[#6B5748] transition"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <span className="font-mono text-sm font-semibold w-14 text-right text-[#241A15]">
+                        <span className="font-mono text-sm font-semibold w-14 text-right text-[#1C1612]">
                           ₹{x.item.price * x.qty}
                         </span>
                       </div>
@@ -482,14 +521,14 @@ export default function CafeLandingPage() {
             </div>
 
             {cart.length > 0 && (
-              <div className="border-t border-[#ECE3D8] pt-6 space-y-4">
+              <div className="border-t border-[#E8DFD3] pt-6 space-y-4">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-sm font-light text-[#6E5848]">Estimated Total</span>
-                  <span className="font-mono text-2xl font-semibold text-[#241A15]">₹{total}</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#6B5748]">Estimated Total</span>
+                  <span className="font-mono text-2xl font-bold text-[#1C1612]">₹{total}</span>
                 </div>
                 <button 
                   onClick={orderWhatsApp} 
-                  className="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white py-3.5 rounded-full text-xs uppercase font-semibold tracking-wider transition shadow-md"
+                  className="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white py-4 rounded-full text-xs uppercase font-semibold tracking-wider transition shadow-md active:scale-95"
                 >
                   <Send className="w-4 h-4" /> Order via WhatsApp Pickup
                 </button>
@@ -499,17 +538,17 @@ export default function CafeLandingPage() {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-[#241A15] text-[#D8C7B5] py-12 px-6 border-t border-[#3D2C22]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      {/* Boutique Footer */}
+      <footer className="bg-[#1C1612] text-[#D4C3B3] py-14 px-6 lg:px-12 border-t border-[#2D231D]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
-            <p className="font-serif text-xl font-normal text-[#FDFBF7]">Velvet &amp; Bean</p>
-            <p className="text-xs text-[#9B7B63] mt-1">Artisanal Coffee &amp; Bistro • Pune</p>
+            <p className="font-serif text-2xl font-normal text-[#FAF7F2]">Velvet &amp; Bean</p>
+            <p className="text-xs text-[#967C69] mt-1 tracking-wider uppercase">Artisanal Coffee Bar &bull; Bakehouse &bull; Pune</p>
           </div>
-          <div className="flex items-center gap-6 text-xs text-[#9B7B63]">
+          <div className="flex items-center gap-6 text-xs text-[#967C69] tracking-wider">
             <span>Muktai Apt, opp. Ashish Garden</span>
-            <span>•</span>
-            <a href="tel:+917447379014" className="hover:text-[#FDFBF7] transition">+91 7447379014</a>
+            <span>&bull;</span>
+            <a href="tel:+917447379014" className="hover:text-[#FAF7F2] transition">+91 7447379014</a>
           </div>
         </div>
       </footer>
