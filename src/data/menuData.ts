@@ -42,7 +42,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'coffee',
     price: 190,
     description: 'Rich espresso blended with dark artisanal cocoa and velvety steamed milk.',
-    image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'hot-5',
@@ -68,7 +68,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'coffee',
     price: 220,
     description: 'Traditional light brew topped with a generous swirl of whipped chantilly cream.',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'hot-8',
@@ -101,16 +101,16 @@ export const MENU_ITEMS: MenuItem[] = [
     name: 'Iced Mocha',
     category: 'cold-beverages',
     price: 210,
-    description: 'Chilled chocolate ganache, double espresso, and milk over ice.',
-    image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=800&q=80'
+    description: 'Chilled chocolate ganache, double espresso, and milk poured over cracked ice cubes.',
+    image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'cold-3',
     name: 'Iced Americano',
     category: 'cold-beverages',
     price: 180,
-    description: 'Crisp cold mineral water poured over double espresso and rocks.',
-    image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80'
+    description: 'Crisp cold mineral water poured over double espresso shots and ice rocks.',
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'cold-4',
@@ -118,15 +118,15 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'cold-beverages',
     price: 200,
     description: 'Blended espresso shake crowned with whipped cream and caramel drizzle.',
-    image: 'https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'cold-5',
     name: 'Vietnamese Iced Coffee',
     category: 'cold-beverages',
     price: 220,
-    description: 'Dark French roast slow-dripped over thick sweet condensed milk.',
-    image: 'https://images.unsplash.com/photo-1587080413959-06b859fb107d?auto=format&fit=crop&w=800&q=80',
+    description: 'Dark French roast slow-dripped over thick sweet condensed milk and ice.',
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80',
     badge: 'Popular'
   },
   {
@@ -143,7 +143,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'cold-beverages',
     price: 250,
     description: 'Rich hazelnut Nutella shake blended with crushed dark cookies.',
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80',
     badge: 'Sweet Tooth'
   },
   {
@@ -151,7 +151,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: 'Salted Caramel Milkshake',
     category: 'cold-beverages',
     price: 240,
-    description: 'Buttery caramel blended with Himalayan pink salt and vanilla bean cream.',
+    description: 'Buttery caramel blended with Himalayan pink salt and vanilla bean cream in a tall glass.',
     image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=800&q=80'
   },
   {
@@ -300,7 +300,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'sandwiches',
     price: 280,
     description: 'Spiced cottage cheese and charred bell peppers in piquant sauce inside sourdough focaccia.',
-    image: 'https://images.unsplash.com/photo-1619860860774-1e2e17343432?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'sand-5',
