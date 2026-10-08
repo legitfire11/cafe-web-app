@@ -59,7 +59,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'coffee',
     price: 250,
     description: 'Creamy pistachio gelato drowned in a hot shot of bold espresso.',
-    image: 'https://images.unsplash.com/photo-1594911772125-07fc7a2d8d9f?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1592663527359-cf6642f54cff?auto=format&fit=crop&w=800&q=80',
     badge: 'Chef Signature'
   },
   {
@@ -325,7 +325,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'sandwiches',
     price: 190,
     description: 'Crusty toasted French baguette loaded with roasted garlic butter and melted mozzarella.',
-    image: 'https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1619860860774-1e2e17343432?auto=format&fit=crop&w=800&q=80'
   },
 
   // --- ARTISANAL PASTA ---
